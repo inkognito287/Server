@@ -7,6 +7,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApplication2.Models;
+using System.Net.Mail;
+using System.Net;
 
 namespace WebApplication2.Controllers
 {
@@ -38,11 +40,39 @@ namespace WebApplication2.Controllers
 
         }
         [HttpPost]
-        public async Task<string> AddAsync(User user)
+        public async Task<bool> AddAsync(User user)
         {
-            db.Add(user);
+            foreach (var item in db.Users)
+            {
+                if (item.Name==user.Name)
+                    return false;
+            
+            }
+                db.Add(user);
             await db.SaveChangesAsync();
-            return "Added";
+            return true;
+        }
+        public void email()
+        {
+            // отправитель - устанавливаем адрес и отображаемое в письме имя
+            MailAddress from = new MailAddress("vip.cod042@mail.ru", "Обеспечиваем безопасноть");
+            // кому отправляем
+            MailAddress to = new MailAddress("vip.cod05@mail.ru");
+            // создаем объект сообщения
+            MailMessage m = new MailMessage(from, to);
+            // тема письма
+            m.Subject = "Тест";
+            // текст письма
+            m.Body = "<h2>Письмо-тест работы smtp-клиента</h2>";
+            // письмо представляет код html
+            m.IsBodyHtml = true;
+            // адрес smtp-сервера и порт, с которого будем отправлять письмо
+            SmtpClient smtp = new SmtpClient("smtp.mail.ru", 587);
+            // логин и пароль
+            smtp.Credentials = new NetworkCredential("somemail@gmail.com", "mypassword");
+            smtp.EnableSsl = true;
+            smtp.Send(m);
+            Console.Read();
         }
     }
 }

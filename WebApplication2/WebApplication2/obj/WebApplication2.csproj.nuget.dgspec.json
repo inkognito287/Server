@@ -1,24 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\ServerAndroid\\WebApplication2\\WebApplication2\\WebApplication2.csproj": {}
+    "D:\\Github\\Server\\WebApplication2\\WebApplication2\\WebApplication2.csproj": {}
   },
   "projects": {
-    "D:\\ServerAndroid\\WebApplication2\\WebApplication2\\WebApplication2.csproj": {
+    "D:\\Github\\Server\\WebApplication2\\WebApplication2\\WebApplication2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ServerAndroid\\WebApplication2\\WebApplication2\\WebApplication2.csproj",
+        "projectUniqueName": "D:\\Github\\Server\\WebApplication2\\WebApplication2\\WebApplication2.csproj",
         "projectName": "WebApplication2",
-        "projectPath": "D:\\ServerAndroid\\WebApplication2\\WebApplication2\\WebApplication2.csproj",
-        "packagesPath": "C:\\Users\\vipco\\.nuget\\packages\\",
-        "outputPath": "D:\\ServerAndroid\\WebApplication2\\WebApplication2\\obj\\",
+        "projectPath": "D:\\Github\\Server\\WebApplication2\\WebApplication2\\WebApplication2.csproj",
+        "packagesPath": "C:\\Users\\n.hlushko\\.nuget\\packages\\",
+        "outputPath": "D:\\Github\\Server\\WebApplication2\\WebApplication2\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "D:\\Visual Studio shared\\NuGetPackages"
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\vipco\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\n.hlushko\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,8 +25,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://nuget.org": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
