@@ -52,27 +52,61 @@ namespace WebApplication2.Controllers
             await db.SaveChangesAsync();
             return true;
         }
-        public void email()
+        [HttpPost]
+        public async Task<bool> DeleteAsync(String name)
         {
-            // отправитель - устанавливаем адрес и отображаемое в письме имя
-            MailAddress from = new MailAddress("vip.cod042@mail.ru", "Обеспечиваем безопасноть");
-            // кому отправляем
-            MailAddress to = new MailAddress("vip.cod05@mail.ru");
-            // создаем объект сообщения
-            MailMessage m = new MailMessage(from, to);
-            // тема письма
-            m.Subject = "Тест";
-            // текст письма
-            m.Body = "<h2>Письмо-тест работы smtp-клиента</h2>";
-            // письмо представляет код html
-            m.IsBodyHtml = true;
-            // адрес smtp-сервера и порт, с которого будем отправлять письмо
-            SmtpClient smtp = new SmtpClient("smtp.mail.ru", 587);
-            // логин и пароль
-            smtp.Credentials = new NetworkCredential("somemail@gmail.com", "mypassword");
-            smtp.EnableSsl = true;
-            smtp.Send(m);
-            Console.Read();
+            foreach (var item in db.Users)
+            {
+                if (item.Name == name)
+                    db.Remove(item);
+                break;
+            }
+            await db.SaveChangesAsync();
+            return true;
+        }
+        [HttpPost]
+        public async Task<bool> DeleteAll(String name)
+        {
+            foreach (var item in db.Users)
+            {
+                
+                    db.Remove(item);
+                
+            }
+            await db.SaveChangesAsync();
+            return true;
+        }
+        [HttpPost]
+        public String Email(String email, int number)
+        {
+            try
+            {
+                SmtpClient mySmtpClient = new SmtpClient("smtp.mail.ru");
+  
+                MailMessage mail = new MailMessage();
+                mail.From = new MailAddress("vip.cod05@mail.ru"); // Адрес отправителя
+                mail.To.Add(new MailAddress(email)); // Адрес получателя
+                mail.Subject = "Потвердите регистрацию";
+                mail.Body = "Ваш код "+number;
+
+                SmtpClient client = new SmtpClient();
+                client.Host = "smtp.mail.ru";
+                client.Port = 587; // Обратите внимание что порт 587
+                client.EnableSsl = true;
+                client.Credentials = new NetworkCredential("vip.cod05@mail.ru", "nikita"); // Ваши логин и пароль
+                client.Send(mail);
+                return "true";
+            }
+            catch(SmtpException ex) 
+            {
+                return ex.Message;
+
+            }
+            catch(Exception ex)
+            {
+                return ex.Message;
+            }
+            
         }
     }
 }
