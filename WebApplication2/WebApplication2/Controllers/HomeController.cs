@@ -34,8 +34,8 @@ namespace WebApplication2.Controllers
                 if (item.Name == model.Name && item.Password == model.Password)
                     return "true";
             }
-        
-               
+
+
             return "false";
 
         }
@@ -44,11 +44,13 @@ namespace WebApplication2.Controllers
         {
             foreach (var item in db.Users)
             {
-                if (item.Name==user.Name)
+                if (item.Name == user.Name)
                     return false;
-            
+                if (item.Email == user.Email)
+                    return false;
+
             }
-                db.Add(user);
+            db.Add(user);
             await db.SaveChangesAsync();
             return true;
         }
@@ -69,12 +71,37 @@ namespace WebApplication2.Controllers
         {
             foreach (var item in db.Users)
             {
-                
-                    db.Remove(item);
-                
+
+                db.Remove(item);
+
             }
             await db.SaveChangesAsync();
             return true;
+        }
+        [HttpPost]
+        public bool ForgotPassword(String name, int number)
+        {
+            foreach (var item in db.Users)
+            {
+                if (item.Name == name)
+                {
+                    Email(item.Email, number);
+                    return true;
+                }
+
+
+            }
+            return false;
+        }
+        [HttpPost]
+        public bool NewPassword(string name,string password)
+        {
+
+            var user = db.Users.Where(c => c.Name == name).FirstOrDefault();
+            user.Password = password;
+                    db.SaveChangesAsync();
+                    return true;
+       
         }
         [HttpPost]
         public String Email(String email, int number)
