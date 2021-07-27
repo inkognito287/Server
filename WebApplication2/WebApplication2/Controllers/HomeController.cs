@@ -103,6 +103,16 @@ namespace WebApplication2.Controllers
                     return true;
        
         }
+
+        [HttpPost]
+        public bool test(string name, string password)
+        {
+            if (name == "Nikita" && password == "123")
+                return true;
+            else return false;
+
+        }
+
         [HttpPost]
         public String Email(String email, int number)
         {
