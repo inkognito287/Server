@@ -92,7 +92,6 @@ D:\Github\Server\WebApplication2\WebApplication2\bin\Debug\net5.0\Microsoft.Iden
 D:\Github\Server\WebApplication2\WebApplication2\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
 D:\Github\Server\WebApplication2\WebApplication2\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 D:\Github\Server\WebApplication2\WebApplication2\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
-D:\Github\Server\WebApplication2\WebApplication2\bin\Debug\net5.0\Newtonsoft.Json.dll
 D:\Github\Server\WebApplication2\WebApplication2\bin\Debug\net5.0\System.Configuration.ConfigurationManager.dll
 D:\Github\Server\WebApplication2\WebApplication2\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
 D:\Github\Server\WebApplication2\WebApplication2\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
@@ -140,3 +139,4 @@ D:\Github\Server\WebApplication2\WebApplication2\obj\Debug\net5.0\WebApplication
 D:\Github\Server\WebApplication2\WebApplication2\obj\Debug\net5.0\ref\WebApplication2.dll
 D:\Github\Server\WebApplication2\WebApplication2\obj\Debug\net5.0\WebApplication2.pdb
 D:\Github\Server\WebApplication2\WebApplication2\obj\Debug\net5.0\WebApplication2.genruntimeconfig.cache
+D:\Github\Server\WebApplication2\WebApplication2\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
