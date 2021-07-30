@@ -74,9 +74,9 @@ namespace WebApplication2.Controllers
 
 
         [HttpPost]
-        public bool test(string name, string password, string tokens)
+        public bool test(string name, string password)
         {
-            if (name == "Nikita" && password == "123" && token.tokenName==tokens)
+            if (name == "Nikita" && password == "123")
                 return true;
             else return false;
 

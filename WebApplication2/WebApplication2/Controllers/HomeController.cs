@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using WebApplication2.Models;
 using System.Net.Mail;
 using System.Net;
+using System.IO;
+using System.Drawing;
 
 namespace WebApplication2.Controllers
 {
@@ -112,9 +114,28 @@ namespace WebApplication2.Controllers
             else return false;
 
         }
-
-
         [HttpPost]
+        public bool image(byte[] image, string name, string code)
+        {
+            if (Directory.Exists("images")) { }
+            else
+                Directory.CreateDirectory("images");
+
+            using (FileStream fileStream = new FileStream("images/" + name + ".txt", FileMode.OpenOrCreate))
+            {
+                byte[] array = System.Text.Encoding.Default.GetBytes(code);
+                fileStream.Write(array);
+            }
+            using (var imageMemoryStream = new MemoryStream(image))
+            {
+                Image imgFromStream = Image.FromStream(imageMemoryStream);
+                imgFromStream.Save("images/" + name + ".jpg");
+            }
+            return true;
+        }
+
+
+            [HttpPost]
         public String Email(String email, int number)
         {
             try

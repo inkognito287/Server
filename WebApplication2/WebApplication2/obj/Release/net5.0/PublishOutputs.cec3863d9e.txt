@@ -1,6 +1,7 @@
 D:\Github\Server\WebApplication2\WebApplication2\obj\Release\net5.0\PubTmp\Out\WebApplication2.exe
 D:\Github\Server\WebApplication2\WebApplication2\obj\Release\net5.0\PubTmp\Out\wwwroot\css\site.css
 D:\Github\Server\WebApplication2\WebApplication2\obj\Release\net5.0\PubTmp\Out\wwwroot\favicon.ico
+D:\Github\Server\WebApplication2\WebApplication2\obj\Release\net5.0\PubTmp\Out\wwwroot\index.html
 D:\Github\Server\WebApplication2\WebApplication2\obj\Release\net5.0\PubTmp\Out\wwwroot\js\site.js
 D:\Github\Server\WebApplication2\WebApplication2\obj\Release\net5.0\PubTmp\Out\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
 D:\Github\Server\WebApplication2\WebApplication2\obj\Release\net5.0\PubTmp\Out\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
@@ -41,6 +42,7 @@ D:\Github\Server\WebApplication2\WebApplication2\obj\Release\net5.0\PubTmp\Out\W
 D:\Github\Server\WebApplication2\WebApplication2\obj\Release\net5.0\PubTmp\Out\WebApplication2.deps.json
 D:\Github\Server\WebApplication2\WebApplication2\obj\Release\net5.0\PubTmp\Out\WebApplication2.runtimeconfig.json
 D:\Github\Server\WebApplication2\WebApplication2\obj\Release\net5.0\PubTmp\Out\WebApplication2.pdb
+D:\Github\Server\WebApplication2\WebApplication2\obj\Release\net5.0\PubTmp\Out\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 D:\Github\Server\WebApplication2\WebApplication2\obj\Release\net5.0\PubTmp\Out\Microsoft.Data.SqlClient.dll
 D:\Github\Server\WebApplication2\WebApplication2\obj\Release\net5.0\PubTmp\Out\Microsoft.EntityFrameworkCore.dll
 D:\Github\Server\WebApplication2\WebApplication2\obj\Release\net5.0\PubTmp\Out\Microsoft.EntityFrameworkCore.Abstractions.dll
@@ -53,9 +55,9 @@ D:\Github\Server\WebApplication2\WebApplication2\obj\Release\net5.0\PubTmp\Out\M
 D:\Github\Server\WebApplication2\WebApplication2\obj\Release\net5.0\PubTmp\Out\Microsoft.IdentityModel.Protocols.dll
 D:\Github\Server\WebApplication2\WebApplication2\obj\Release\net5.0\PubTmp\Out\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 D:\Github\Server\WebApplication2\WebApplication2\obj\Release\net5.0\PubTmp\Out\Microsoft.IdentityModel.Tokens.dll
-D:\Github\Server\WebApplication2\WebApplication2\obj\Release\net5.0\PubTmp\Out\Newtonsoft.Json.dll
 D:\Github\Server\WebApplication2\WebApplication2\obj\Release\net5.0\PubTmp\Out\System.Configuration.ConfigurationManager.dll
 D:\Github\Server\WebApplication2\WebApplication2\obj\Release\net5.0\PubTmp\Out\System.Diagnostics.DiagnosticSource.dll
+D:\Github\Server\WebApplication2\WebApplication2\obj\Release\net5.0\PubTmp\Out\System.Drawing.Common.dll
 D:\Github\Server\WebApplication2\WebApplication2\obj\Release\net5.0\PubTmp\Out\System.IdentityModel.Tokens.Jwt.dll
 D:\Github\Server\WebApplication2\WebApplication2\obj\Release\net5.0\PubTmp\Out\System.Runtime.Caching.dll
 D:\Github\Server\WebApplication2\WebApplication2\obj\Release\net5.0\PubTmp\Out\System.Security.Cryptography.ProtectedData.dll
@@ -69,6 +71,8 @@ D:\Github\Server\WebApplication2\WebApplication2\obj\Release\net5.0\PubTmp\Out\r
 D:\Github\Server\WebApplication2\WebApplication2\obj\Release\net5.0\PubTmp\Out\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.pdb
 D:\Github\Server\WebApplication2\WebApplication2\obj\Release\net5.0\PubTmp\Out\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
 D:\Github\Server\WebApplication2\WebApplication2\obj\Release\net5.0\PubTmp\Out\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
+D:\Github\Server\WebApplication2\WebApplication2\obj\Release\net5.0\PubTmp\Out\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+D:\Github\Server\WebApplication2\WebApplication2\obj\Release\net5.0\PubTmp\Out\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
 D:\Github\Server\WebApplication2\WebApplication2\obj\Release\net5.0\PubTmp\Out\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 D:\Github\Server\WebApplication2\WebApplication2\obj\Release\net5.0\PubTmp\Out\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 D:\Github\Server\WebApplication2\WebApplication2\obj\Release\net5.0\PubTmp\Out\WebApplication2.Views.dll
