@@ -10,15 +10,16 @@ using WebApplication2.Models;
 
 namespace WebApplication2.Controllers
 {
-      public class AccountController : Controller
+    public class AccountController : Controller
     {
         Token token = new Token();
-       
+
         // тестовые данные вместо использования базы данных
         private List<Person> people = new List<Person>
         {
             new Person {Login="admin@gmail.com", Password="12345", Role = "admin" },
-            new Person { Login="qwerty@gmail.com", Password="55555", Role = "user" }
+            new Person { Login="qwerty@gmail.com", Password="55555", Role = "user" },
+             new Person { Login="Nikita", Password="123", Role = "user" }
         };
 
         [HttpPost("/token")]
@@ -40,14 +41,14 @@ namespace WebApplication2.Controllers
                     expires: now.Add(TimeSpan.FromMinutes(AuthOptions.LIFETIME)),
                     signingCredentials: new SigningCredentials(AuthOptions.GetSymmetricSecurityKey(), SecurityAlgorithms.HmacSha256));
             var encodedJwt = new JwtSecurityTokenHandler().WriteToken(jwt);
-            
+
             token.tokenName = encodedJwt;
             var response = new
-            {   
+            {
                 access_token = encodedJwt,
                 username = identity.Name
             };
-            
+
 
             return Json(response);
         }
@@ -74,13 +75,40 @@ namespace WebApplication2.Controllers
 
 
         [HttpPost]
-        public bool test(string name, string password)
+        public IActionResult test(string name, string password)
         {
-            if (name == "Nikita" && password == "123")
-                return true;
-            else return false;
+            var identity = GetIdentity(name, password);
+            if (identity == null)
+            {
+                return BadRequest(new { errorText = "Invalid username or password." });
+            }
 
+
+            var now = DateTime.UtcNow;
+            // создаем JWT-токен
+            var jwt = new JwtSecurityToken(
+                    issuer: AuthOptions.ISSUER,
+                    audience: AuthOptions.AUDIENCE,
+                    notBefore: now,
+                    claims: identity.Claims,
+                    expires: now.Add(TimeSpan.FromMinutes(AuthOptions.LIFETIME)),
+                    signingCredentials: new SigningCredentials(AuthOptions.GetSymmetricSecurityKey(), SecurityAlgorithms.HmacSha256));
+            var encodedJwt = new JwtSecurityTokenHandler().WriteToken(jwt);
+
+            token.tokenName = encodedJwt;
+            var response = new
+            {
+                access_token = encodedJwt,
+                username = identity.Name
+            };
+
+
+            return Json(response);
         }
+
+
+
+
 
 
 
