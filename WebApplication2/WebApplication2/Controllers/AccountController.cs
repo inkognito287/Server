@@ -90,7 +90,7 @@ namespace WebApplication2.Controllers
                     issuer: AuthOptions.ISSUER,
                     audience: AuthOptions.AUDIENCE,
                     notBefore: now,
-                    claims: identity.Claims,
+                    claims: null,
                     expires: now.Add(TimeSpan.FromMinutes(AuthOptions.LIFETIME)),
                     signingCredentials: new SigningCredentials(AuthOptions.GetSymmetricSecurityKey(), SecurityAlgorithms.HmacSha256));
             var encodedJwt = new JwtSecurityTokenHandler().WriteToken(jwt);
@@ -106,11 +106,18 @@ namespace WebApplication2.Controllers
             return Json(response);
         }
 
+        [HttpPost]
+        public string testService(string key)
+        {
+            if (key == "123")
+                return "true";
+            else return "false";
 
 
 
 
 
 
+        }
     }
 }
