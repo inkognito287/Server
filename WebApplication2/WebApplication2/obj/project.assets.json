@@ -5278,8 +5278,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\n.hlushko\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\n.hlushko\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
@@ -5290,9 +5289,6 @@
       "packagesPath": "C:\\Users\\n.hlushko\\.nuget\\packages\\",
       "outputPath": "D:\\Github\\Server\\WebApplication2\\WebApplication2\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
         "C:\\Users\\n.hlushko\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -5351,7 +5347,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }

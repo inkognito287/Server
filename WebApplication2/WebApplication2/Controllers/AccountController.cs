@@ -2,7 +2,9 @@
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IdentityModel.Tokens.Jwt;
+using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -75,49 +77,64 @@ namespace WebApplication2.Controllers
 
 
         [HttpPost]
-        public IActionResult test(string name, string password)
+        public IActionResult test( string password)
         {
-            var identity = GetIdentity(name, password);
-            if (identity == null)
-            {
-                return BadRequest(new { errorText = "Invalid username or password." });
+
+            if (password == "123") {
+                var now = DateTime.UtcNow;
+                // создаем JWT-токен
+                var jwt = new JwtSecurityToken(
+                        issuer: AuthOptions.ISSUER,
+                        audience: AuthOptions.AUDIENCE,
+                        notBefore: now,
+                        claims: null,
+                        expires: now.Add(TimeSpan.FromMinutes(AuthOptions.LIFETIME)),
+                        signingCredentials: new SigningCredentials(AuthOptions.GetSymmetricSecurityKey(), SecurityAlgorithms.HmacSha256));
+                var encodedJwt = new JwtSecurityTokenHandler().WriteToken(jwt);
+
+                token.tokenName = encodedJwt;
+                var response = new
+                {
+                    access_token = encodedJwt,
+
+                };
+
+                return Json(response); 
+                
             }
-
-
-            var now = DateTime.UtcNow;
-            // создаем JWT-токен
-            var jwt = new JwtSecurityToken(
-                    issuer: AuthOptions.ISSUER,
-                    audience: AuthOptions.AUDIENCE,
-                    notBefore: now,
-                    claims: null,
-                    expires: now.Add(TimeSpan.FromMinutes(AuthOptions.LIFETIME)),
-                    signingCredentials: new SigningCredentials(AuthOptions.GetSymmetricSecurityKey(), SecurityAlgorithms.HmacSha256));
-            var encodedJwt = new JwtSecurityTokenHandler().WriteToken(jwt);
-
-            token.tokenName = encodedJwt;
-            var response = new
-            {
-                access_token = encodedJwt,
-                username = identity.Name
-            };
-
-
-            return Json(response);
+            else return BadRequest(new { errorText = "Invalid username or password." });
         }
 
         [HttpPost]
-        public string testService(string key)
+        public string testService(string name,string password)
         {
-            if (key == "123")
-                return "true";
-            else return "false";
+            if (password == "123" && name=="Nikita") {
 
+                return "correct";
 
+            }
+            else  return "Неверный логин, или пароль" ;
 
+        }
 
+        [HttpPost]
+        public bool image(byte[] image, string name, string code)
+        {
+            if (Directory.Exists("images")) { }
+            else
+                Directory.CreateDirectory("images");
 
-
+            using (FileStream fileStream = new FileStream("images/" + name + ".txt", FileMode.OpenOrCreate))
+            {
+                byte[] array = System.Text.Encoding.Default.GetBytes(code);
+                fileStream.Write(array);
+            }
+            using (var imageMemoryStream = new MemoryStream(image))
+            {
+                Image imgFromStream = Image.FromStream(imageMemoryStream);
+                imgFromStream.Save("images/" + name + ".jpg");
+            }
+            return true;
         }
     }
 }

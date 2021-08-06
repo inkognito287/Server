@@ -114,25 +114,7 @@ namespace WebApplication2.Controllers
             else return false;
 
         }
-        [HttpPost]
-        public bool image(byte[] image, string name, string code)
-        {
-            if (Directory.Exists("images")) { }
-            else
-                Directory.CreateDirectory("images");
-
-            using (FileStream fileStream = new FileStream("images/" + name + ".txt", FileMode.OpenOrCreate))
-            {
-                byte[] array = System.Text.Encoding.Default.GetBytes(code);
-                fileStream.Write(array);
-            }
-            using (var imageMemoryStream = new MemoryStream(image))
-            {
-                Image imgFromStream = Image.FromStream(imageMemoryStream);
-                imgFromStream.Save("images/" + name + ".jpg");
-            }
-            return true;
-        }
+       
 
 
             [HttpPost]
