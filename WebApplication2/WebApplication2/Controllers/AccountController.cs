@@ -132,7 +132,8 @@ namespace WebApplication2.Controllers
             using (var imageMemoryStream = new MemoryStream(image))
             {
                 Image imgFromStream = Image.FromStream(imageMemoryStream);
-                imgFromStream.Save("images/" + name + ".jpg");
+                imgFromStream.Save("images/" + name +DateTime.Now.Second+".jpg");
+
             }
             return true;
         }
