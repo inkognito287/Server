@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "6YVNhqU5dVvKuMRnHZ5m/34uvGmngZa4n8QVFY8xVgmqQFfHttcRikYHhtsZD0C5v7h2X7zPuxNcLjM0TfXG5Q==",
+  "dgSpecHash": "Q6XYVCxq5N8E40qOXW25gsy10oeFH/vtWb7ueRNv9YoRbyPUEmLxWBBwvCxuMDRXW28kC2rZZkPQ21IowTYuBA==",
   "success": true,
   "projectFilePath": "D:\\Github\\Server\\WebApplication2\\WebApplication2\\WebApplication2.csproj",
   "expectedPackageFiles": [
@@ -93,7 +93,8 @@
     "C:\\Users\\n.hlushko\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\n.hlushko\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\n.hlushko\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\n.hlushko\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    "C:\\Users\\n.hlushko\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
+    "C:\\Users\\n.hlushko\\.nuget\\packages\\zxing.net\\0.16.6\\zxing.net.0.16.6.nupkg.sha512"
   ],
   "logs": []
 }

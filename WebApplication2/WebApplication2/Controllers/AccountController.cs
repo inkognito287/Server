@@ -9,6 +9,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using WebApplication2.Models;
+using ZXing;
 
 namespace WebApplication2.Controllers
 {
@@ -102,7 +103,7 @@ namespace WebApplication2.Controllers
                 return Json(response); 
                 
             }
-            else return BadRequest(new { errorText = "Invalid username or password." });
+            else return BadRequest(new { errorText = "false" });
         }
 
         [HttpPost]
@@ -129,13 +130,40 @@ namespace WebApplication2.Controllers
                 byte[] array = System.Text.Encoding.Default.GetBytes(code);
                 fileStream.Write(array);
             }
+           Bitmap imgFromStream;
             using (var imageMemoryStream = new MemoryStream(image))
             {
-                Image imgFromStream = Image.FromStream(imageMemoryStream);
-                imgFromStream.Save("images/" + name +DateTime.Now.Second+".jpg");
+                 imgFromStream = (Bitmap)Bitmap.FromStream(imageMemoryStream);
+                imgFromStream.Save("images/" + name +DateTime.Now.Second+".bmp");
 
             }
-            return true;
+            try
+            {
+                analyze(name, imgFromStream);
+            }catch(Exception e) { 
+            
+            
+            };
+                return true;
         }
+
+        private void analyze(string name , Bitmap bitmap)
+        {
+            if (Directory.Exists("serverAnalyze")) { }
+            else
+                Directory.CreateDirectory("serverAnalyze");
+
+
+            BarcodeReader reader =  new BarcodeReader();
+            var result = reader.Decode(bitmap);
+            Console.WriteLine(result.Text);
+
+            using (FileStream fileStream = new FileStream("serverAnalyze/" + name + ".txt", FileMode.OpenOrCreate))
+            {
+                byte[] array = System.Text.Encoding.Default.GetBytes(result.Text);
+                fileStream.Write(array);
+            }
+        }
+        
     }
 }

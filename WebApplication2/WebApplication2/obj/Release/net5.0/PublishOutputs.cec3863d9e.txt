@@ -61,6 +61,7 @@ D:\Github\Server\WebApplication2\WebApplication2\obj\Release\net5.0\PubTmp\Out\S
 D:\Github\Server\WebApplication2\WebApplication2\obj\Release\net5.0\PubTmp\Out\System.IdentityModel.Tokens.Jwt.dll
 D:\Github\Server\WebApplication2\WebApplication2\obj\Release\net5.0\PubTmp\Out\System.Runtime.Caching.dll
 D:\Github\Server\WebApplication2\WebApplication2\obj\Release\net5.0\PubTmp\Out\System.Security.Cryptography.ProtectedData.dll
+D:\Github\Server\WebApplication2\WebApplication2\obj\Release\net5.0\PubTmp\Out\zxing.dll
 D:\Github\Server\WebApplication2\WebApplication2\obj\Release\net5.0\PubTmp\Out\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
 D:\Github\Server\WebApplication2\WebApplication2\obj\Release\net5.0\PubTmp\Out\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
 D:\Github\Server\WebApplication2\WebApplication2\obj\Release\net5.0\PubTmp\Out\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
