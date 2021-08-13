@@ -125,7 +125,9 @@ namespace WebApplication2.Controllers
             else
                 Directory.CreateDirectory("images");
 
-            using (FileStream fileStream = new FileStream("images/" + name + ".txt", FileMode.OpenOrCreate))
+            var time = DateTime.Now.Second;
+
+            using (FileStream fileStream = new FileStream("images/" + name +time+".txt", FileMode.OpenOrCreate))
             {
                 byte[] array = System.Text.Encoding.Default.GetBytes(code);
                 fileStream.Write(array);
@@ -134,12 +136,12 @@ namespace WebApplication2.Controllers
             using (var imageMemoryStream = new MemoryStream(image))
             {
                  imgFromStream = (Bitmap)Bitmap.FromStream(imageMemoryStream);
-                imgFromStream.Save("images/" + name +DateTime.Now.Second+".bmp");
+                imgFromStream.Save("images/" + name +time+".bmp");
 
             }
             try
             {
-                analyze(name, imgFromStream);
+                analyze(name+time, imgFromStream);
             }catch(Exception e) { 
             
             
@@ -153,16 +155,66 @@ namespace WebApplication2.Controllers
             else
                 Directory.CreateDirectory("serverAnalyze");
 
-
-            BarcodeReader reader =  new BarcodeReader();
-            var result = reader.Decode(bitmap);
-            Console.WriteLine(result.Text);
-
-            using (FileStream fileStream = new FileStream("serverAnalyze/" + name + ".txt", FileMode.OpenOrCreate))
+            try
             {
-                byte[] array = System.Text.Encoding.Default.GetBytes(result.Text);
-                fileStream.Write(array);
+                BarcodeReader reader = new BarcodeReader();
+                var result = reader.Decode(bitmap);
+                Console.WriteLine(result.Text);
+                var analyzeText = result.Text;
+                using (FileStream fileStream = new FileStream("serverAnalyze/" + name + ".txt", FileMode.OpenOrCreate))
+                {
+                    byte[] array = System.Text.Encoding.Default.GetBytes(result.Text);
+                    fileStream.Write(array);
+                }
+
+                Directory.CreateDirectory("noVerified");
+
+                using (StreamReader fileRead = new StreamReader("images/" + name + ".txt"))
+                {
+                    if (analyzeText == fileRead.ReadLine()) 
+                    {
+                       
+                    }
+                    else
+                    {
+                        var pathOld = "images/" + name + ".bmp";
+                        var pathNew = "noVerified/" + name + ".bmp";
+
+                        FileInfo fileInf = new FileInfo(pathOld);
+                        if (fileInf.Exists)
+                        {
+                            if (Directory.Exists(pathNew)) { }
+                            else
+                                Directory.CreateDirectory(pathNew);
+
+
+                            fileInf.MoveTo(pathNew);
+
+                        }
+                    }
+                }
             }
+            catch (Exception e) {
+                var pathOld = "images/" + name + ".bmp";
+                var pathNew = "noVerified/" + name + ".bmp";
+
+                FileInfo fileInf = new FileInfo(pathOld);
+                if (fileInf.Exists)
+                {
+                    if (Directory.Exists(pathNew)) { }
+                    else
+                        Directory.CreateDirectory(pathNew);
+
+
+                    fileInf.MoveTo(pathNew);
+
+                }
+
+                System.IO.File.WriteAllText("error.txt", e.ToString());
+            }
+
+
+
         }
         
     }
