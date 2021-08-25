@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Authorization;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -12,7 +13,7 @@ using WebApplication2.Models;
 using ZXing;
 
 namespace WebApplication2.Controllers
-{
+{   [Authorize] 
     public class AccountController : Controller
     {
         Token token = new Token();
@@ -24,8 +25,8 @@ namespace WebApplication2.Controllers
             new Person { Login="qwerty@gmail.com", Password="55555", Role = "user" },
              new Person { Login="Nikita", Password="123", Role = "user" }
         };
-
-        [HttpPost("/token")]
+        [AllowAnonymous]
+        [HttpPost]
         public IActionResult Token(string username, string password)
         {
             var identity = GetIdentity(username, password);
@@ -76,36 +77,20 @@ namespace WebApplication2.Controllers
             return null;
         }
 
-
+        [AllowAnonymous]
         [HttpPost]
-        public IActionResult test( string password)
+        public bool test( string password)
         {
 
             if (password == "123") {
-                var now = DateTime.UtcNow;
-                // создаем JWT-токен
-                var jwt = new JwtSecurityToken(
-                        issuer: AuthOptions.ISSUER,
-                        audience: AuthOptions.AUDIENCE,
-                        notBefore: now,
-                        claims: null,
-                        expires: now.Add(TimeSpan.FromMinutes(AuthOptions.LIFETIME)),
-                        signingCredentials: new SigningCredentials(AuthOptions.GetSymmetricSecurityKey(), SecurityAlgorithms.HmacSha256));
-                var encodedJwt = new JwtSecurityTokenHandler().WriteToken(jwt);
-
-                token.tokenName = encodedJwt;
-                var response = new
-                {
-                    access_token = encodedJwt,
-
-                };
-
-                return Json(response); 
+               
+                return true;
                 
             }
-            else return BadRequest(new { errorText = "false" });
+            else return false;
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public string testService(string name,string password)
         {
@@ -118,9 +103,11 @@ namespace WebApplication2.Controllers
 
         }
 
+        
         [HttpPost]
         public bool image(byte[] image, string name, string code)
         {
+            if (User.Identity.IsAuthenticated)
             if (Directory.Exists("images")) { }
             else
                 Directory.CreateDirectory("images");
